@@ -1,4 +1,8 @@
 from pymongo import MongoClient
-client = MongoClient()
+import pandas as pd
 
-client = MongoClient(“mongodb://localhost:27017/”)
+client = MongoClient("localhost", 27017, maxPoolSize=50)
+db = client.mydb
+collection = db.angel
+data = pd.DataFrame(list(collection.find()))
+print(data)
