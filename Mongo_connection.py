@@ -6,8 +6,7 @@ db = client.mydb
 for db in client.list_databases():
     print(db)
     
-'''
-collection = db.angel
+
+collection = db.Test
 data = pd.DataFrame(list(collection.find()))
 print(data)
-'''
