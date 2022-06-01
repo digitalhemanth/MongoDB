@@ -7,6 +7,10 @@ db = client.mydb
 for db in client.list_databases():
     print(db)
 '''
-collection = db.mydb
-data = pd.DataFrame(list(collection.find()))
+mydatabase = client.Test
+data = pd.DataFrame(list(mydatabase.list_collection_names()))
+print(data)
+
+mydatabase = client.Test
+data = pd.DataFrame(list(mydatabase.list_collection_names()))
 print(data)
