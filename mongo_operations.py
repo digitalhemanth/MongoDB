@@ -5,7 +5,7 @@ import pandas as pd
 client = MongoClient("localhost", 27017)
 print("\n Connected to ", client)
 def ShowDB():
-    print("\n MongoDb Databases ")
+    print("\n MongoDb Databases \n")
     data = pd.DataFrame(list(client.list_databases()))
     print(data)
 '''
