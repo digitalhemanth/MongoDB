@@ -124,4 +124,24 @@ PyDb> db.Products.drop()
 true
 PyDb> show collections
 
+PyDb> db.create.Collection("Orders")
+TypeError: db.create.Collection is not a function
+PyDb> db.createCollection("Orders")
+{ ok: 1 }
+PyDb> show collections
+Orders
+PyDb> db.orders.insertOne({"_id":5,"Orderby":"Hemanth Kumar","item_id":202245,"Odate":12-06-2022})
+{ acknowledged: true, insertedId: 5 }
+PyDb> show collections
+orders
+Orders
+PyDb> db.Orders.insertOne({"_id":5,"Orderby":"Hemanth Kumar","item_id":202245,"Odate":12-06-2022})
+{ acknowledged: true, insertedId: 5 }
+PyDb> db.orders.Remove()
+TypeError: db.orders.Remove is not a function
+PyDb> db.orders.remove()
+DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+MongoshInvalidInputError: [COMMON-10001] Missing required argument at position 0 (Collection.remove)
+PyDb> db.orders.drop()
+true
 PyDb>
