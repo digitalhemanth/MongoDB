@@ -145,3 +145,25 @@ MongoshInvalidInputError: [COMMON-10001] Missing required argument at position 0
 PyDb> db.orders.drop()
 true
 PyDb>
+
+Please enter a MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 629a4296aec53917e4102067
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.4.2
+Using MongoDB:          5.0.8
+Using Mongosh:          1.4.2
+
+
+PyDb> db.Orders.insertOne({"_id":1,"Orderby":"Lohs","item_id":202244,"Odate":12-06-2022})
+{ acknowledged: true, insertedId: 1 }
+PyDb> db.Orders.find()
+[
+  { _id: 5, Orderby: 'Hemanth Kumar', item_id: 202245, Odate: -2016 },
+  { _id: 1, Orderby: 'Lohs', item_id: 202244, Odate: -2016 }
+]
+PyDb> db.Orders.find().pretty()
+[
+  { _id: 5, Orderby: 'Hemanth Kumar', item_id: 202245, Odate: -2016 },
+  { _id: 1, Orderby: 'Lohs', item_id: 202244, Odate: -2016 }
+]
+PyDb>
