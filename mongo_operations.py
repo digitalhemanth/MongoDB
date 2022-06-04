@@ -8,12 +8,14 @@ def ShowDB():
     print("\n MongoDb Databases \n")
     data = pd.DataFrame(list(client.list_databases()))
     print(data)
-'''
-print("\n Collections List ")
-mydatabase = client.Test
-data = pd.DataFrame(list(mydatabase.list_collection_names()))
-print(data)
-'''
+
+def ShowCollection():
+    #database = input("Please Provide Database name : \n")
+    print("\n Collections List ")
+    mydatabase = client.Test
+    data = pd.DataFrame(list(mydatabase.list_collection_names()))
+    print(data)
+
 def main():
     choice = """ 
       1 : Show Databases
@@ -28,6 +30,8 @@ def main():
     try:
         if Option == 1:
             ShowDB()
+        if Option == 3:
+            ShowCollection
     except:
         print("Sorry something went wrong !")
     finally:
