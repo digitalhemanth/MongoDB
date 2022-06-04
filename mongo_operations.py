@@ -12,7 +12,7 @@ def ShowDB():
 def ShowCollection():
     #database = input("Please Provide Database name : \n")
     print("\n Collections List ")
-    mydatabase = client.Test
+    mydatabase = client.PyDb
     data = pd.DataFrame(list(mydatabase.list_collection_names()))
     print(data)
 
@@ -31,7 +31,7 @@ def main():
         if Option == 1:
             ShowDB()
         if Option == 3:
-            ShowCollection
+            ShowCollection()
     except:
         print("Sorry something went wrong !")
     finally:
