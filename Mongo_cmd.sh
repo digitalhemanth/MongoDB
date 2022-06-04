@@ -200,3 +200,76 @@ PyDb> db.Orders.find().pretty()
   { _id: 8, Orderby: 'Sree', item_id: 202242, Odate: 12062029 }
 ]
 PyDb>
+
+Please enter a MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 629a4296aec53917e4102067
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.4.2
+Using MongoDB:          5.0.8
+Using Mongosh:          1.4.2
+
+
+PyDb> db.Orders.insertOne({"_id":1,"Orderby":"Lohs","item_id":202244,"Odate":12-06-2022})
+{ acknowledged: true, insertedId: 1 }
+PyDb> db.Orders.find()
+[
+  { _id: 5, Orderby: 'Hemanth Kumar', item_id: 202245, Odate: -2016 },
+  { _id: 1, Orderby: 'Lohs', item_id: 202244, Odate: -2016 }
+]
+PyDb> db.Orders.find().pretty()
+[
+  { _id: 5, Orderby: 'Hemanth Kumar', item_id: 202245, Odate: -2016 },
+  { _id: 1, Orderby: 'Lohs', item_id: 202244, Odate: -2016 }
+PyDb>
+PyDb> db.Orders.insert([{"_id":9,"Orderby":"Surya","item_id":202243,"Odate":12062029},{"_id":8,"Orderby":"Sree","item_id":202242,"Odate":12062029}])
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{ acknowledged: true, insertedIds: { '0': 9, '1': 8 } }
+PyDb> db.Orders.find().pretty()
+[
+  { _id: 5, Orderby: 'Hemanth Kumar', item_id: 202245, Odate: -2016 },
+  { _id: 1, Orderby: 'Lohs', item_id: 202244, Odate: -2016 },
+  { _id: 9, Orderby: 'Surya', item_id: 202243, Odate: 12062029 },
+  { _id: 8, Orderby: 'Sree', item_id: 202242, Odate: 12062029 }
+]
+PyDb> db.Orders.update({"_id":1},{ $set: { "Odate":1206200}}
+...
+...
+PyDb> db.Orders.find().pretty()
+[
+  { _id: 5, Orderby: 'Hemanth Kumar', item_id: 202245, Odate: -2016 },
+  { _id: 1, Orderby: 'Lohs', item_id: 202244, Odate: -2016 },
+  { _id: 9, Orderby: 'Surya', item_id: 202243, Odate: 12062029 },
+  { _id: 8, Orderby: 'Sree', item_id: 202242, Odate: 12062029 }
+]
+PyDb>  db.Orders.update({"_id":1},{ $set: { "Odate":1206200}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+PyDb> db.Orders.find().pretty()
+[
+  { _id: 5, Orderby: 'Hemanth Kumar', item_id: 202245, Odate: -2016 },
+  { _id: 1, Orderby: 'Lohs', item_id: 202244, Odate: 1206200 },
+  { _id: 9, Orderby: 'Surya', item_id: 202243, Odate: 12062029 },
+  { _id: 8, Orderby: 'Sree', item_id: 202242, Odate: 12062029 }
+]
+PyDb>  db.Orders.update({"_id":5},{ $set: { "Odate":1206200}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+PyDb> db.Orders.find().pretty()
+[
+  { _id: 5, Orderby: 'Hemanth Kumar', item_id: 202245, Odate: 1206200 },
+  { _id: 1, Orderby: 'Lohs', item_id: 202244, Odate: 1206200 },
+  { _id: 9, Orderby: 'Surya', item_id: 202243, Odate: 12062029 },
+  { _id: 8, Orderby: 'Sree', item_id: 202242, Odate: 12062029 }
+]
+PyDb>  db.Orders.update({"_id":1},{ $set: { "Odate":1206200}}
