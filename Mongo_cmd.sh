@@ -662,19 +662,6 @@ PyDb> db.Orders.find({_id: {$in:[1,8]}})
     Orderby: 'Lohs',
     item_id: 202244,
 
-PyDb> db.Product.insert([{"_id":202243,"item":"Watch","Brand":"Apple", "Prise: 50000},
-Uncaught:
-SyntaxError: Unterminated string constant. (1:65)
-
-
-PyDb> db.Product.insert([{"_id":202243,"item":"Watch","Brand":"Apple","Prise: 50000},
-Uncaught:
-SyntaxError: Unterminated string constant. (1:64)
-
-PyDb>  {"_id":202244,"item":"Watch","Brand":"OnePlus","Prise: 5000},
-Uncaught:
-SyntaxError: Missing semicolon. (1:7)
-
 
 PyDb> db.Products.insert({"_id":202245,"item":"Laptop","Brand":"Lenovo","Prise": 90000})
 DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
