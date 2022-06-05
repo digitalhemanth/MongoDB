@@ -457,3 +457,111 @@ PyDb> db.Orders.find().pretty()
     Type: 'Prime'
   }
 ]
+
+
+
+PyDb> show dbs
+PyDb    72.00 KiB
+Test    72.00 KiB
+admin   40.00 KiB
+config  36.00 KiB
+local   80.00 KiB
+PyDb> use PyDb
+already on db PyDb
+PyDb> show collections
+Orders
+PyDb> db.Orders.find()
+[
+  {
+    _id: 5,
+    Orderby: 'Hemanth Kumar',
+    item_id: 202245,
+    Odate: 1206200,
+    Type: 'Prime'
+  },
+  {
+    _id: 1,
+    Orderby: 'Lohs',
+    item_id: 202244,
+    Odate: 1206200,
+    Type: 'Prime'
+  },
+  {
+
+PyDb> db.Orders.find()
+[
+  {
+    _id: 5,
+    Orderby: 'Hemanth Kumar',
+    item_id: 202245,
+    Odate: 1206200,
+    Type: 'Prime'
+  },
+
+PyDb> db.Orders.find()
+[
+  {
+    _id: 5,
+    Orderby: 'Hemanth Kumar',
+    item_id: 202245,
+    Odate: 1206200,
+    Type: 'Prime'
+  },
+  {
+    _id: 1,
+    Orderby: 'Lohs',
+    item_id: 202244,
+    Odate: 1206200,
+    Type: 'Prime'
+  },
+  {
+    _id: 9,
+    Orderby: 'Surya',
+    item_id: 202243,
+    Odate: 12062029,
+    Type: 'Prime'
+  },
+  {
+    _id: 8,
+    Orderby: 'Sree',
+    item_id: 202242,
+    Odate: 12062029,
+    Type: 'Prime'
+  }
+]
+PyDb> db.Orders.find( _id:1)
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:19)
+
+> 1 | db.Orders.find( _id:1)
+    |                    ^
+  2 |
+
+PyDb> db.Orders.find({_id:1})
+[
+  {
+    _id: 1,
+    Orderby: 'Lohs',
+    item_id: 202244,
+    Odate: 1206200,
+    Type: 'Prime'
+  }
+]
+PyDb> db.Orders.find({_id: {$in:[1,8]}})
+[
+  {
+    _id: 1,
+    Orderby: 'Lohs',
+    item_id: 202244,
+    Odate: 1206200,
+    Type: 'Prime'
+  },
+  {
+    _id: 8,
+    Orderby: 'Sree',
+    item_id: 202242,
+    Odate: 12062029,
+    Type: 'Prime'
+  }
+]
+PyDb>
