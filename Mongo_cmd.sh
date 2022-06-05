@@ -679,9 +679,6 @@ PyDb>  {"_id":202244,"item":"Watch","Brand":"OnePlus","Prise: 5000},
 Uncaught:
 SyntaxError: Missing semicolon. (1:7)
 
-> 1 |  {"_id":202244,"item":"Watch","Brand":"OnePlus","Prise: 5000},
-    |        ^
-  2 |
 
 PyDb> db.Products.insert({"_id":202245,"item":"Laptop","Brand":"Lenovo","Prise": 90000})
 DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
