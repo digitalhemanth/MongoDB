@@ -790,11 +790,6 @@ PyDb> db.Product.insert([{"_id":202243,"item":"Watch","Brand":"Apple","Prise: 50
 Uncaught:
 SyntaxError: Unterminated string constant. (1:64)
 
-> 1 | db.Product.insert([{"_id":202243,"item":"Watch","Brand":"Apple","Prise: 50000},
-    |                                                                 ^
-  2 |
-
-
 PyDb> db.Product.find()
 [
   { _id: 202243, item: 'Watch', Brand: 'Apple', Prise: 50000 },
