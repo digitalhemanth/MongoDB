@@ -967,3 +967,159 @@ PyDb> db.Orders.find({},{"Orderby":1})
   { _id: 8, Orderby: 'Sree' }
 ]
 PyDb>
+
+
+PyDb> show dbs
+PyDb    72.00 KiB
+Test    72.00 KiB
+admin   40.00 KiB
+config  36.00 KiB
+local   80.00 KiB
+PyDb> use PyDb
+already on db PyDb
+PyDb> show collections
+Orders
+PyDb> db.Orders.find()
+[
+  {
+    _id: 5,
+    Orderby: 'Hemanth Kumar',
+    item_id: 202245,
+    Odate: 1206200,
+    Type: 'Prime'
+  },
+  {
+    _id: 1,
+    Orderby: 'Lohs',
+    item_id: 202244,
+    Odate: 1206200,
+    Type: 'Prime'
+  },
+  {
+
+PyDb> db.Orders.find()
+[
+  {
+    _id: 5,
+    Orderby: 'Hemanth Kumar',
+    item_id: 202245,
+    Odate: 1206200,
+    Type: 'Prime'
+  },
+
+PyDb> db.Orders.find()
+[
+  {
+    _id: 5,
+    Orderby: 'Hemanth Kumar',
+    item_id: 202245,
+    Odate: 1206200,
+    Type: 'Prime'
+  },
+  {
+    _id: 1,
+    Orderby: 'Lohs',
+    item_id: 202244,
+    Odate: 1206200,
+    Type: 'Prime'
+  },
+  {
+    _id: 9,
+    Orderby: 'Surya',
+    item_id: 202243,
+    Odate: 12062029,
+    Type: 'Prime'
+  },
+  {
+    _id: 8,
+    Orderby: 'Sree',
+    item_id: 202242,
+    Odate: 12062029,
+    Type: 'Prime'
+  }
+]
+PyDb> db.Orders.find( _id:1)
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:19)
+
+> 1 | db.Orders.find( _id:1)
+    |                    ^
+  2 |
+
+PyDb> db.Orders.find({_id:1})
+[
+  {
+    _id: 1,
+    Orderby: 'Lohs',
+    item_id: 202244,
+    Odate: 1206200,
+    Type: 'Prime'
+  }
+]
+PyDb> db.Orders.find({_id: {$in:[1,8]}})
+[
+  {
+    _id: 1,
+    Orderby: 'Lohs',
+    item_id: 202244,
+
+PyDb> db.Product.insert([{"_id":202243,"item":"Watch","Brand":"Apple", "Prise: 50000},
+Uncaught:
+SyntaxError: Unterminated string constant. (1:65)
+
+
+PyDb> db.Product.insert([{"_id":202243,"item":"Watch","Brand":"Apple","Prise: 50000},
+Uncaught:
+SyntaxError: Unterminated string constant. (1:64)
+
+> 1 | db.Product.insert([{"_id":202243,"item":"Watch","Brand":"Apple","Prise: 50000},
+    |                                                                 ^
+  2 |
+
+
+PyDb> db.Product.find()
+[
+  { _id: 202243, item: 'Watch', Brand: 'Apple', Prise: 50000 },
+  { _id: 202244, item: 'Watch', Brand: 'OnePlus', Prise: 5000 },
+  { _id: 202245, item: 'Laptop', Brand: 'Lenovo', Prise: 90000 }
+]
+PyDb> db.Product.remove({_id:202243})
+DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+{ acknowledged: true, deletedCount: 1 }
+PyDb> db.Product.find()
+[
+  { _id: 202244, item: 'Watch', Brand: 'OnePlus', Prise: 5000 },
+  { _id: 202245, item: 'Laptop', Brand: 'Lenovo', Prise: 90000 }
+]
+PyDb> db.Orders.find()
+[
+  {
+    _id: 5,
+    Orderby: 'Hemanth Kumar',
+    item_id: 202245,
+    Odate: 1206200,
+    Type: 'Prime'
+  },
+  {
+
+PyDb> show collections
+Orders
+Product
+PyDb> db.Orders.find().limit(2)
+[
+  {
+    _id: 5,
+    Orderby: 'Hemanth Kumar',
+    item_id: 202245,
+    Odate: 1206200,
+    Type: 'Prime'
+  },
+  {
+    _id: 1,
+    Orderby: 'Lohs',
+    item_id: 202244,
+    Odate: 1206200,
+    Type: 'Prime'
+  }
+]
+PyDb>
