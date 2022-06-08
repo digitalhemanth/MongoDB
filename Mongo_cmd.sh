@@ -2682,7 +2682,6 @@ PyDb> db.Orders.find()
   {
 
 PyDb> db.Product.insert( { _id: 202394, item: 'Mobile', Brand: 'Lenovo', Prise: 41000 })
-{ acknowledged: true, insertedIds: { '0': 202394 } }
 PyDb> db.Product.insert( { _id: 202294, item: 'Mobile', Brand: 'OnePlus', Prise: 48000 })
 { acknowledged: true, insertedIds: { '0': 202294 } }
 
@@ -2694,3 +2693,18 @@ PyDb> db.Product.find()
   { _id: 202294, item: 'Mobile', Brand: 'OnePlus', Prise: 48000 },
   { _id: 202264, item: 'Watch', Brand: 'OnePlus', Prise: 32000 }
 ]
+PyDb> db.Product.aggregate([{$group : { _id: "$item",  counts : {$count : 1}}}])
+MongoServerError: $count takes no arguments, i.e. $count:{}
+PyDb> db.Product.aggregate([{$group : { _id: "$item",  counts : {$sum : 1}}}])
+[
+  { _id: 'Mobile', counts: 2 },
+  { _id: 'Watch', counts: 2 },
+  { _id: 'Laptop', counts: 1 }
+]
+PyDb> db.Product.aggregate([{$group : { _id: "$item",  counts : {$avg : 1}}}])
+[
+  { _id: 'Mobile', counts: 1 },
+  { _id: 'Watch', counts: 1 },
+  { _id: 'Laptop', counts: 1 }
+]
+PyDb>
