@@ -2682,6 +2682,7 @@ PyDb> db.Orders.find()
   {
 
 PyDb> db.Product.insert( { _id: 202394, item: 'Mobile', Brand: 'Lenovo', Prise: 41000 })
+{ acknowledged: true, insertedIds: { '0': 202394 } }
 PyDb> db.Product.insert( { _id: 202294, item: 'Mobile', Brand: 'OnePlus', Prise: 48000 })
 { acknowledged: true, insertedIds: { '0': 202294 } }
 
