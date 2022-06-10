@@ -2878,3 +2878,56 @@ DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany
   upsertedCount: 0
 }
 PyDb>
+
+test> show dbs
+PyDb    216.00 KiB
+Test     72.00 KiB
+admin    40.00 KiB
+config   36.00 KiB
+local    80.00 KiB
+test> use PyDb
+switched to db PyDb
+PyDb> show collections
+aProduct
+Orders
+Product
+PyDb> db.aProduct.drop()
+true
+PyDb> db.Product.find()
+[
+  { _id: 202244, item: 'Watch', Brand: 'OnePlus', Prise: 5000 },
+  { _id: 202245, item: 'Laptop', Brand: 'Lenovo', Prise: 90000 },
+  { _id: 202394, item: 'Mobile', Brand: 'Lenovo', Prise: 41000 },
+  { _id: 202294, item: 'Mobile', Brand: 'OnePlus', Prise: 48000 },
+  { _id: 202264, item: 'Watch', Brand: 'OnePlus', Prise: 32000 }
+]
+PyDb> db.Product.find({_id:1}).expline()
+TypeError: db.Product.find({_id:1}).expline is not a function
+PyDb> db.Product.find({item:"Mobile"})..explain()
+Uncaught:
+SyntaxError: Unexpected token (1:33)
+
+> 1 | db.Product.find({item:"Mobile"})..explain()
+    |                                  ^
+  2 |
+
+PyDb> db.Product.find({item:"Mobile"}).explain()
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'PyDb.Product',
+    indexFilterSet: false,
+    parsedQuery: { item: { '$eq': 'Mobile' } },
+
+PyDb> db.Orders.find({_id:5})
+[
+  {
+    _id: 5,
+    Orderby: 'Hemanth Kumar',
+    item_id: 202245,
+    Odate: 1206200,
+    Type: 'Prime',
+    Address: [ { city: 'Banglore', pin: 5252 }, { phone: 36236596 } ]
+  }
+]
+PyDb> db.Orders.find({_id:5})
