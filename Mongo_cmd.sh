@@ -2709,3 +2709,90 @@ PyDb> db.Product.aggregate([{$group : { _id: "$item",  counts : {$avg : 1}}}])
   { _id: 'Laptop', counts: 1 }
 ]
 PyDb>
+
+
+test> show dbs
+PyDb    216.00 KiB
+Test     72.00 KiB
+admin    40.00 KiB
+config   36.00 KiB
+local    80.00 KiB
+test> use PyDb
+switched to db PyDb
+PyDb> show collections
+aProduct
+Orders
+Product
+PyDb> db.aProduct.drop()
+true
+PyDb>
+
+test> show dbs
+PyDb    216.00 KiB
+Test     72.00 KiB
+admin    40.00 KiB
+config   36.00 KiB
+local    80.00 KiB
+test> use PyDb
+switched to db PyDb
+PyDb> show collections
+aProduct
+Orders
+Product
+PyDb> db.aProduct.drop()
+true
+PyDb> db.Product.find()
+[
+  { _id: 202244, item: 'Watch', Brand: 'OnePlus', Prise: 5000 },
+  { _id: 202245, item: 'Laptop', Brand: 'Lenovo', Prise: 90000 },
+  { _id: 202394, item: 'Mobile', Brand: 'Lenovo', Prise: 41000 },
+  { _id: 202294, item: 'Mobile', Brand: 'OnePlus', Prise: 48000 },
+  { _id: 202264, item: 'Watch', Brand: 'OnePlus', Prise: 32000 }
+]
+PyDb> db.Product.find({_id:1}).expline()
+TypeError: db.Product.find({_id:1}).expline is not a function
+PyDb> db.Product.find({item:"Mobile"})..explain()
+Uncaught:
+SyntaxError: Unexpected token (1:33)
+
+> 1 | db.Product.find({item:"Mobile"})..explain()
+    |                                  ^
+  2 |
+
+PyDb> db.Product.find({item:"Mobile"}).explain()
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'PyDb.Product',
+    indexFilterSet: false,
+    parsedQuery: { item: { '$eq': 'Mobile' } },
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      stage: 'COLLSCAN',
+      filter: { item: { '$eq': 'Mobile' } },
+      direction: 'forward'
+    },
+    rejectedPlans: []
+  },
+  command: { find: 'Product', filter: { item: 'Mobile' }, '$db': 'PyDb' },
+  serverInfo: {
+    host: 'LAPTOP-15HARP1Gkk',
+    port: 27017,
+    version: '5.0.8',
+    gitVersion: 'c87e1c23421bf79614baf500fda6622bd90f674e'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600
+  },
+  ok: 1
+}
+PyDb>
