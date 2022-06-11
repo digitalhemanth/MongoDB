@@ -2907,9 +2907,6 @@ PyDb> db.Product.find({item:"Mobile"})..explain()
 Uncaught:
 SyntaxError: Unexpected token (1:33)
 
-> 1 | db.Product.find({item:"Mobile"})..explain()
-    |                                  ^
-  2 |
 
 PyDb> db.Product.find({item:"Mobile"}).explain()
 {
